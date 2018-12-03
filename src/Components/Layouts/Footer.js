@@ -19,8 +19,8 @@ export default ({ muscles, category, onSelect }) => {
         centered
       >
         <Tab label="All" />
-        {muscles.map(muscle => (
-          <Tab key={muscle} label={muscle} />
+        {muscles.map(group => (
+          <Tab key={group} label={group} />
         ))}
       </Tabs>
     </Paper>

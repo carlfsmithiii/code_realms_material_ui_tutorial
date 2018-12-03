@@ -18,7 +18,16 @@ const styles = {
   }
 };
 
-export default ({ category, exercises }) => (
+export default ({
+  category,
+  exercises,
+  onSelect,
+  exercise: {
+    id,
+    title = "Welcome!",
+    description = "Please select an exercise from the list on the left."
+  }
+}) => (
   <Grid container>
     <Grid item sm>
       <Paper style={styles.Paper}>
@@ -29,8 +38,8 @@ export default ({ category, exercises }) => (
                 {group}
               </Typography>
               <List component="ul">
-                {exercises.map(({ title }) => (
-                  <ListItem key={title} button>
+                {exercises.map(({ id, title }) => (
+                  <ListItem key={id} button onClick={() => onSelect(id)}>
                     <ListItemText primary={title} />
                   </ListItem>
                 ))}
@@ -42,9 +51,9 @@ export default ({ category, exercises }) => (
     </Grid>
     <Grid item sm>
       <Paper style={styles.Paper}>
-        <Typography variant="h4">Welcome!</Typography>
+        <Typography variant="h4">{title}</Typography>
         <Typography variant="h6" style={{ margineTop: 20 }}>
-          Please select an exercise from the list on the left
+          {description}
         </Typography>
       </Paper>
     </Grid>

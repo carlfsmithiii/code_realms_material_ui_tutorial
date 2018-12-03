@@ -6,7 +6,7 @@ export const exercises = [
     {
         id: 'overhead-press',
         title: 'Overhead Press', 
-        description: 'DElts exercise...',
+        description: 'Delts exercise...',
         muscles: 'shoulders'
     }, 
     {
