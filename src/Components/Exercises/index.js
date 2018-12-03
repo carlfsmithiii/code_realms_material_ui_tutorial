@@ -14,28 +14,30 @@ const styles = {
     marginTop: 10,
     marginBottom: 10,
     height: 500,
-    overflowY: 'auto'
+    overflowY: "auto"
   }
 };
 
-export default ({ exercises }) => (
+export default ({ category, exercises }) => (
   <Grid container>
     <Grid item sm>
       <Paper style={styles.Paper}>
-        {exercises.map(([group, exercises]) => (
-          <Fragment>
-            <Typography variant="h5" style={{ textTransform: "capitalize" }}>
-              {group}
-            </Typography>
-            <List component="ul">
-              {exercises.map(({ title }) => (
-                <ListItem button>
-                  <ListItemText primary={title} />
-                </ListItem>
-              ))}
-            </List>
-          </Fragment>
-        ))}
+        {exercises.map(([group, exercises]) =>
+          !category || category === group ? (
+            <Fragment key={group}>
+              <Typography variant="h5" style={{ textTransform: "capitalize" }}>
+                {group}
+              </Typography>
+              <List component="ul">
+                {exercises.map(({ title }) => (
+                  <ListItem key={title} button>
+                    <ListItemText primary={title} />
+                  </ListItem>
+                ))}
+              </List>
+            </Fragment>
+          ) : null
+        )}
       </Paper>
     </Grid>
     <Grid item sm>

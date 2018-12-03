@@ -21,13 +21,23 @@ export default class extends Component {
     );
   }
 
+  handleCategorySelected = category => {
+    this.setState({ category });
+  };
+
   render() {
     const exercises = this.getExercisesByMuscles();
+    const { category } = this.state;
+
     return (
       <Fragment>
         <Header />
-        <Exercises exercises={exercises} />
-        <Footer muscles={muscles} />
+        <Exercises category={category} exercises={exercises} />
+        <Footer
+          category={category}
+          onSelect={this.handleCategorySelected}
+          muscles={muscles}
+        />
       </Fragment>
     );
   }
